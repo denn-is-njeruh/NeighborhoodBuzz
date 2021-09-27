@@ -4,6 +4,9 @@ from .forms import NewUserForm
 from django.contrib import messages
 
 # Create your views here.
+def index(request):
+  return render(request, 'index.html',)
+
 def register_user(request):
   if request.method == "POST":
     form = NewUserForm(request.POST)

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand text-light" href="#">Rate-My-Project</a>
+        <a class="navbar-brand text-dark" href="#">NeighborHoodBuzz</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,7 +16,7 @@
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="fas fa-home text-light" style="margin-left:100%; font-size:15px" aria-current="page" href="#"></a>
+              <a class="fas fa-home text-dark" style="margin-left:100%; font-size:15px" aria-current="page" href="#"></a>
             </li>
           </ul>
 
@@ -30,26 +30,14 @@
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="fas fa-upload nav-link text-light" style="margin-left:30px" aria-current="page" href="#"></a>
+              <a class="fas fa-upload nav-link text-dark" style="margin-left:30px" aria-current="page" href="#"></a>
             </li>
           </ul>
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">Submit Your Projects
-              <a class="fas fa-user-circle nav-link text-light" aria-current="page" href="#"></a>
-            </li>
-          </ul>
-
-          <ul class="navbar-nav mr-auto">
-            {% if user.is_authenticated %} 
             <li class="nav-item">
-              <a class="fas fa-sign-out-alt nav-link text-light" href="#"></a>
+              <a class="fas fa-user-circle nav-link text-dark" aria-current="page" href="#"></a>
             </li>
-            {% else %} 
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Login</a>
-            </li>
-            {% endif %}
           </ul>
 
         </div>
