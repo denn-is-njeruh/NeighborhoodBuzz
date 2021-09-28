@@ -11,12 +11,13 @@ This web application will help users get notifications of whats happening in the
 
 ## Application Behaviours
 As the application's user you will be able to:
-1. View posted projects and their details.
-2. Post a project to be rated/reviewed.
-3. Rate/review other users' projects.
-4. Search for projects.
-5. View your project's overall score and that of other users.
-6. View the project owner's profile page.
+1. Sign in with the application to start using.
+2. Set up a profile about them, their general location and the neighborhood name.
+3. Find a list of different businesses in their neighborhood.
+4. Find Contact Information for the health department and Police authorities near their neighborhood.
+5. Create Posts that will be visible to everyone in their neighborhood.
+6. Change their neighborhood when they decide to move out.
+7. Only view details of a single neighborhood.
 
 
 ### Installation and setup instructions
