@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
-from .forms import NewUserForm
+from .forms import NewUserForm,ProfileForm,UpdateUserForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -49,6 +49,17 @@ def logout_user(request):
 
 @login_required
 def profile(request):
-  # user = User.objects.get()
-  # user.save()
-  return render(request,'profile/profile.html')
+  if request.method == 'POST':
+    user_form = UpdateUserForm(request.POST, instance=request.user)
+    profile_form = ProfileForm(request.POST, instance=request.user.profile)
+    if user_form.is_valid() and profile_form.is_valid():
+      user_form.save()
+      profile_form.save()
+      messages.success(request, 'Your profile was successfully updated!')
+      return redirect('profileupdate')
+    else:
+      messages.error(request,'Please try updating your profile again.')
+  else:
+    user_form = UpdateUserForm(instance=request.user)
+    profile_form = ProfileForm(instance=request.user.profile)
+  return render(request,'profile/profile.html',{"user_form": user_form, "prolife_form":profile_form})
