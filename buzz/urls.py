@@ -9,4 +9,8 @@ urlpatterns = [
   url(r'login', views.login_user, name='login'),
   url(r'logout', views.logout_user, name='logout'),
   url(r'profile/', views.profile, name='profile'),
+  url(r'updateprofile', views.update_profile, name='updateprofile'),
 ]
+
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
