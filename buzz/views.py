@@ -14,9 +14,9 @@ def register_user(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      messages.success(request, f'Registration Successful.')
+      messages.success(request, 'Registration Successful.')
       return redirect('homepage')
-    messages.error(request, f'Unsuccessful registration. Invalid information.')
+    messages.error(request, 'Unsuccessful registration. Invalid information.')
   form = NewUserForm()
   return render(request, 'registration/registration_form.html', {"registration_form": form})
 
@@ -30,11 +30,17 @@ def login_user(request):
       user = authenticate(username=username,password=password)
       if user is not None:
         login(request, user)
-        messages.info(request, f"You are now logged in as {username}.")
+        messages.info(request, "You are now logged in as {username}.")
         return redirect('homepage')
       else:
-        messages.error(request, f'Invalid Username or password')
+        messages.error(request, 'Invalid Username or password')
     else:
-      messages.error(request, f'Invalid username or password')
+      messages.error(request, 'Invalid username or password')
   form = AuthenticationForm()
   return render(request, 'registration/login_form.html', {"login_form": form})
+
+
+def logout_user(request):
+  logout(request)
+  messages.info(request, 'You have successfully logged out.')
+  return redirect('login')
