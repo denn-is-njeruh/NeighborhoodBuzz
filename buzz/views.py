@@ -3,6 +3,7 @@ from django.contrib.auth import login,authenticate,logout
 from .forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -44,3 +45,10 @@ def logout_user(request):
   logout(request)
   messages.info(request, 'You have successfully logged out.')
   return redirect('login')
+
+
+@login_required
+def profile(request):
+  # user = User.objects.get()
+  # user.save()
+  return render(request,'profile/profile.html')
