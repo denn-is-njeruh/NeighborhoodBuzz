@@ -12,8 +12,8 @@ class Profile(models.Model):
   def __str__(self):
     return self.user.username
 
-  def save(self):
-    return self.save()
+  def save_profile(self):
+    self.save()
 
-  def delete(self):
-    return self.delete()
+  def delete_profile(self):
+    self.delete()

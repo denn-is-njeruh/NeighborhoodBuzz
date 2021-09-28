@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -50,8 +51,8 @@ def logout_user(request):
 
 @login_required
 def profile(request):
-  user = Profile.objects.get()
-  user.save()
+  # user = User.objects.get()
+  # user.save()
   return render(request,'profile/profile.html')
 
 @login_required

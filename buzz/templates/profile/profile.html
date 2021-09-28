@@ -7,11 +7,10 @@
 <div class="container">
   <h2 class="text-center">Here's your profile page {{user.username}}</h2>
   <div class="row my-3 p-3">
-    <img class="rounded-circle account-img" src="{{ user.profile.image.url }} " style="cursor: pointer;"/>
+    <img height="200px" width="10%" class="rounded-circle account-img" src="{{ user.profile.image.url }} " style="cursor: pointer;"/>
   </div>
   <ul>
     <li>Location: {{user.profile.location}}</li>
-    <li>Occupation: {{user.profile.occupation}}</li>
     <li>Bio: {{user.profile.bio}}</li>
   </ul>
 </div>
