@@ -12,6 +12,7 @@ dj-database-url = "*"
 django-bootstrap-v5 = "*"
 django-crispy-forms = "*"
 crispy-bootstrap5 = "*"
+gunicorn = "*"
 
 [dev-packages]
 
