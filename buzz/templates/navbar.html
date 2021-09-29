@@ -36,7 +36,7 @@
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-dark" aria-current="page" href="{% url 'profile' %}"><img height="20px" width="20px" class="rounded-circle account-img" src="{{ user.profile.image.url }}"/></a>
+              <a class="nav-link text-dark" aria-current="page" href="{% url 'profile' profile.username %}"><img height="20px" width="20px" class="rounded-circle account-img" src="{{ user.profile.image.url }}"/></a>
             </li>
           </ul>
 

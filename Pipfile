@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+Django = "*"
 psycopg2-binary = "*"
 django-dotenv = "*"
 cloudinary = "*"
@@ -14,6 +14,7 @@ django-crispy-forms = "*"
 crispy-bootstrap5 = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-fontawesome-5 = "*"
 
 [dev-packages]
 

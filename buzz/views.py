@@ -1,13 +1,17 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth import login,authenticate,logout
 from .forms import NewUserForm,ProfileForm,UpdateUserForm
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.contrib.auth.decorators import login_required
 from .models import Profile,User
+from django.contrib.auth import get_user_model
+
 
 
 # Create your views here.
+User = get_user_model()
+
 def index(request):
   return render(request, 'index.html',)
 
@@ -28,7 +32,7 @@ def login_user(request):
   if request.method == 'POST':
     form = AuthenticationForm(request, data=request.POST)
     if form.is_valid():
-      username = form.cleaned_data.get('name')
+      username = form.cleaned_data.get('username')
       password = form.cleaned_data.get('password')
       user = authenticate(username=username,password=password)
       if user is not None:
@@ -50,10 +54,11 @@ def logout_user(request):
 
 
 @login_required
-def profile(request):
-  # user = User.objects.get()
-  # user.save()
-  return render(request,'profile/profile.html')
+def profile(request, username):
+  #username = request.data['username']
+  profile = get_object_or_404(User,username=username)
+  profile.save()
+  return render(request,'profile/profile.html',{"profile": profile})
 
 @login_required
 def update_profile(request):
@@ -64,10 +69,10 @@ def update_profile(request):
       user_form.save()
       profile_form.save()
       messages.success(request, 'Your profile was successfully updated!')
-      return redirect('profileupdate')
+      return redirect('profile')
     else:
       messages.error(request,'Please try updating your profile again.')
   else:
     user_form = UpdateUserForm(instance=request.user)
     profile_form = ProfileForm(instance=request.user.profile)
-  return render(request,'profile/update_profile.html',{"user_form": user_form, "prolife_form":profile_form})
+  return render(request,'profile/update_profile.html',{"user_form": user_form, "profile_form":profile_form})
