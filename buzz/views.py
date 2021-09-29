@@ -4,8 +4,8 @@ from .forms import NewUserForm,ProfileForm,UpdateUserForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile
-from django.contrib.auth.models import User
+from .models import Profile,User
+
 
 # Create your views here.
 def index(request):
@@ -28,7 +28,7 @@ def login_user(request):
   if request.method == 'POST':
     form = AuthenticationForm(request, data=request.POST)
     if form.is_valid():
-      username = form.cleaned_data.get('username')
+      username = form.cleaned_data.get('name')
       password = form.cleaned_data.get('password')
       user = authenticate(username=username,password=password)
       if user is not None:

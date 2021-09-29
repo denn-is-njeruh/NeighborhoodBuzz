@@ -1,19 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile,User
 
 class NewUserForm(UserCreationForm):
-  email = forms.EmailField()
 
   class Meta:
     model = User
-    fields = ("username", "email", "password1", "password2")
-
+    fields = ("username", "email_address", "password1","password2")
 
   def save(self,commit=True):
     user = super(NewUserForm, self).save(commit=False)
-    user.email = self.cleaned_data['email']
+    user.email_address = self.cleaned_data['email_address']
     if commit:
       user.save()
     return user
@@ -22,7 +19,7 @@ class NewUserForm(UserCreationForm):
 class UpdateUserForm(forms.ModelForm):
   class Meta:
     model = User
-    fields = ['username', 'email']
+    fields = ['username', 'email_address']
 
 
 class ProfileForm(forms.ModelForm):
