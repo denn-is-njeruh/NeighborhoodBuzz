@@ -1,13 +1,11 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Profile,User
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 #Your form details here
-
-
 class NewUserForm(UserCreationForm):
 
   class Meta:
@@ -22,10 +20,10 @@ class NewUserForm(UserCreationForm):
     return user
 
 
-class UpdateUserForm(forms.ModelForm):
+class ExistingUserChangeForm(UserChangeForm):
   class Meta:
     model = User
-    fields = ['email']
+    fields = ('email')
 
 
 class ProfileForm(forms.ModelForm):

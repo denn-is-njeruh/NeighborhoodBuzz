@@ -92,6 +92,7 @@ class Profile(models.Model):
   bio = models.TextField(max_length=200, blank=True)
   image = CloudinaryField('image', blank=True)
   location = models.CharField(max_length=80, blank=True)
+  date_joined = models.DateTimeField(default=timezone.now)
 
   def __str__(self):
     return str(self.user.username)
