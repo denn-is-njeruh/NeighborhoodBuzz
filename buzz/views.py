@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth import login,authenticate,logout
-from .forms import NewUserForm,ProfileForm,UpdateUserForm
+from .forms import NewUserForm,ProfileForm,ExistingUserChangeForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.contrib.auth.decorators import login_required
@@ -54,16 +54,16 @@ def logout_user(request):
 
 
 @login_required
-def profile(request, username):
+def profile(request):
   #username = request.data['username']
-  profile = get_object_or_404(User,username=username)
-  profile.save()
-  return render(request,'profile/profile.html',{"profile": profile})
+  # profile = get_object_or_404(User,pk=pk)
+  # profile.save()
+  return render(request,'profile/profile.html',)
 
 @login_required
 def update_profile(request):
   if request.method == 'POST':
-    user_form = UpdateUserForm(request.POST, instance=request.user)
+    user_form = ExistingUserChangeForm(request.POST, instance=request.user)
     profile_form = ProfileForm(request.POST, instance=request.user.profile)
     if user_form.is_valid() and profile_form.is_valid():
       user_form.save()
@@ -73,6 +73,6 @@ def update_profile(request):
     else:
       messages.error(request,'Please try updating your profile again.')
   else:
-    user_form = UpdateUserForm(instance=request.user)
+    user_form = ExistingUserChangeForm(instance=request.user)
     profile_form = ProfileForm(instance=request.user.profile)
   return render(request,'profile/update_profile.html',{"user_form": user_form, "profile_form":profile_form})

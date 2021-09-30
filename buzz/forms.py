@@ -23,7 +23,7 @@ class NewUserForm(UserCreationForm):
 class ExistingUserChangeForm(UserChangeForm):
   class Meta:
     model = User
-    fields = ('email')
+    fields = ('email',)
 
 
 class ProfileForm(forms.ModelForm):
